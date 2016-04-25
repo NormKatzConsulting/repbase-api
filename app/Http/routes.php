@@ -30,6 +30,15 @@ Route::get('manufacturer/{id}', function ($id) {
 Route::get('manufacturers', function () {
     return App\Manufacturer::all();
 });
+Route::get('purchaseOrder/{id}', function ($id) {
+    return App\PurchaseOrder::find($id);
+});
+Route::get('purchaseOrders', function () {
+    return App\PurchaseOrder::forPage(1,100)->get();
+});
+Route::get('purchaseOrders/{page}/{count}', function ($page=1, $count=100) {
+    return App\PurchaseOrder::forPage($page, $count)->get();
+});
 Route::get('rep/{id}', function ($id) {
     return App\Rep::find($id);
 });
